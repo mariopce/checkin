@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>sign_out_button_name</key>
+        <value>SignOutLocal</value>
+    </entry>
+    <entry>
+        <key>sign_in_button_name</key>
+        <value>SignInLocal</value>
+    </entry>
+</defaultsMap>
