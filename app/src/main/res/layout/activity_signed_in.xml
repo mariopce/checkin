@@ -21,7 +21,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_signed_in" />
+    <include
+
+        layout="@layout/content_signed_in"
+        android:layout_width="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_height="match_parent"
+         />
 
 
 

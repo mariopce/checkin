@@ -1,4 +1,4 @@
-package pl.saramak.fbexample
+package pl.saramak.fbexample.data
 
 import com.google.firebase.database.Exclude
 import java.text.Normalizer

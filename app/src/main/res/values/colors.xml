@@ -3,4 +3,15 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="blind_bird">#FF00FF00</color>
+    <color name="early_bird">#FF00EE00</color>
+
+    <color name="regular">#FF00DD00</color>
+    <color name="late_bird">#FF00CC00</color>
+    <color name="last_bird">#FF00BB00</color>
+    <color name="organizer">#FFFFFF00</color>
+    <color name="vip">#FFFF0000</color>
+    <color name="speaker">#FF0000FF</color>
+
 </resources>
