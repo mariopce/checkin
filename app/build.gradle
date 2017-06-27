@@ -1,18 +1,5 @@
-buildscript {
-    repositories {
-        maven { url 'https://maven.fabric.io/public' }
-    }
 
-    dependencies {
-        classpath 'io.fabric.tools:gradle:1.+'
-    }
-}
 apply plugin: 'com.android.application'
-
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
-
 
 apply plugin: 'kotlin-android'
 
@@ -27,7 +14,8 @@ android {
         applicationId "pl.saramak.fbexample"
         minSdkVersion 23
         targetSdkVersion 25
-        versionCode 1
+        versionCode 2
+        manifestPlaceholders = [fabric_io_id: "06b3a46ff23897266dd90122741dd5cae6c7a610"]
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -50,6 +38,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
