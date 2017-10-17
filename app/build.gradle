@@ -1,3 +1,4 @@
+//noinspection GradleDynamicVersion
 
 apply plugin: 'com.android.application'
 
@@ -9,7 +10,7 @@ apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "26.0.0"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "pl.saramak.fbexample"
         minSdkVersion 23
@@ -22,15 +23,15 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("../xplorer-release-key.keystore")
-            storePassword releaseStorePassword
-            keyAlias "xplorer-key"
-            keyPassword releaseKeyPassword
+            keyAlias MOB6_ALIAS
+            keyPassword MOB6_KEY_PASSWORD
+            storeFile file("../mobilization.keystore")
+            storePassword MOB6_STORE_PASSWORD
         }
     }
     buildTypes {
         debug {
-
+            signingConfig signingConfigs.release
         }
         release {
             minifyEnabled false

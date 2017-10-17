@@ -49,7 +49,7 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
             if (constraint.isNullOrEmpty()) {
                 filtered = orginalList
             } else {
-                filtered = filteredList.filter { normalize(it.last!!).toLowerCase().startsWith(constraint ?: "") || normalize(it.first!!).toLowerCase().startsWith(constraint ?: "") || it.email.toLowerCase().startsWith(constraint ?: "") }
+                filtered = filteredList.filter { normalize(it.last!!).toLowerCase().startsWith(constraint ?: "") || normalize(it.first!!).toLowerCase().startsWith(constraint ?: "") || it.email!!.toLowerCase().startsWith(constraint ?: "") }
             }
             res.values = filtered
             res.count = filtered.size
@@ -91,10 +91,10 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
         holder.personalName.setBackgroundColor(getColor(holder.personalName.context, user))
         //in some cases, it will prevent unwanted situations
         holder.checkin.setOnCheckedChangeListener(null);
-        holder.checkin.isChecked = user.checked;
+//        holder.checkin.isChecked = user.checked!!);
         holder.checkin.setOnCheckedChangeListener { buttonView, isChecked ->
             val myRef = database.getReference("/${user.number}")
-            user.checked = holder.checkin.isChecked
+//            user.checked = holder.checkin.isChecked
             myRef.setValue(user)
         }
 
