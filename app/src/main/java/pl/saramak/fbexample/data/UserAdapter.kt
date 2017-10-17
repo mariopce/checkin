@@ -4,6 +4,7 @@ package pl.saramak.fbexample.data
 import android.content.Context
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.ContextCompat.*
+import android.util.Log
 import pl.saramak.fbexample.R
 
 
@@ -85,16 +86,17 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
         } else {
             user = myDataset.get(position);
         }
+        //Log.d("user", "${user?.last} ${user?.first}" )
         holder.personalName.text = "${user?.last} ${user?.first}";
         holder.personalEmail.text = "${user.email}"
-
+//        Log.d("user", "${user?.last} ${user?.first} ${user.email} ${user.checked}" )
         holder.personalName.setBackgroundColor(getColor(holder.personalName.context, user))
         //in some cases, it will prevent unwanted situations
         holder.checkin.setOnCheckedChangeListener(null);
-//        holder.checkin.isChecked = user.checked!!);
+        holder.checkin.isChecked = user.checked;
         holder.checkin.setOnCheckedChangeListener { buttonView, isChecked ->
             val myRef = database.getReference("/${user.number}")
-//            user.checked = holder.checkin.isChecked
+            user.checked = holder.checkin.isChecked
             myRef.setValue(user)
         }
 

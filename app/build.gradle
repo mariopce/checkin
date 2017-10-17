@@ -39,8 +39,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    androidExtensions {
+        defaultCacheImplementation = "none"
+    }
 
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

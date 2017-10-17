@@ -14,12 +14,12 @@ import java.text.Normalizer
 data class User(val number: Long) {
 
     constructor() : this(0) {
-
     }
+    var checked: Boolean = false
     val first: String? = null
     val last: String? = null
     val type: String? = null
-    var checked: String? = null
+
     val orderid: Long? = null
     val email: String? = null
     @Exclude
