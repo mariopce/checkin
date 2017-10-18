@@ -24,8 +24,8 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="${fabric_io_id}"
-            tools:replace="android:value"/>
+            android:value="06b3a46ff23897266dd90122741dd5cae6c7a610"
+            tools:replace="android:value" />
     </application>
 
 
