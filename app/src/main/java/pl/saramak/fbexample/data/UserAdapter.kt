@@ -5,6 +5,7 @@ import android.content.Context
 import android.support.v4.content.ContextCompat.getColor
 import android.widget.TextView
 import pl.saramak.fbexample.R
+import java.util.regex.Pattern
 
 
 class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) : android.support.v7.widget.RecyclerView.Adapter<UserAdapter.ViewHolder>(), android.widget.Filterable {
@@ -48,7 +49,7 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
             var filtered: List<User> = orginalList
 
             if (!constraint.isNullOrBlank()) {
-                val constraints = constraint!!.split("\\s+")
+                val constraints = constraint!!.split(Pattern.compile("\\s+"))
 
                 for (element in constraints) {
                     filtered = filtered.filter { normalize(it.last!!).toLowerCase().contains(element ?: "") || normalize(it.first!!).toLowerCase().contains(element ?: "") || it.email!!.toLowerCase().contains(element ?: "") }
