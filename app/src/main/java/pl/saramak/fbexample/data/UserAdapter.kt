@@ -6,12 +6,13 @@ import android.support.v4.content.ContextCompat.getColor
 import android.widget.TextView
 import pl.saramak.fbexample.R
 import java.util.regex.Pattern
+import java.text.Normalizer
 
 
 class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) : android.support.v7.widget.RecyclerView.Adapter<UserAdapter.ViewHolder>(), android.widget.Filterable {
 
     companion object Colors {
-        var COLOR_MAP: Map<String, Int> = mapOf(
+        val COLOR_MAP: Map<String, Int> = mapOf(
                 Pair("bli", R.color.blind_bird),
                 Pair("ear", R.color.early_bird),
                 Pair("reg", R.color.regular),
@@ -21,6 +22,7 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
                 Pair("vip", R.color.vip),
                 Pair("spe", R.color.speaker)
         )
+        val pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+")
     }
 
 
@@ -29,6 +31,8 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
     }
 
     class FilterUsers() : android.widget.Filter() {
+        private val regex = Pattern.compile("\\s+")
+
         lateinit var userAdapter: UserAdapter;
         lateinit var filteredList: List<User>
         lateinit var orginalList: List<User>
@@ -49,10 +53,10 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
             var filtered: List<User> = orginalList
 
             if (!constraint.isNullOrBlank()) {
-                val constraints = constraint!!.split(Pattern.compile("\\s+"))
+                val constraints = constraint!!.split(regex)
 
                 for (element in constraints) {
-                    filtered = filtered.filter { normalize(it.last!!).toLowerCase().contains(element ?: "") || normalize(it.first!!).toLowerCase().contains(element ?: "") || it.email!!.toLowerCase().contains(element ?: "") }
+                    filtered = filtered.filter { it.last_normalized!!.toLowerCase().contains(element ?: "") || it.first_normalized!!.toLowerCase().contains(element ?: "") || it.email!!.toLowerCase().contains(element ?: "") }
                 }
             }
 
@@ -61,8 +65,9 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
             return res
         }
 
-        fun normalize(str: CharSequence): String {
-            return java.text.Normalizer.normalize(str, java.text.Normalizer.Form.NFD).replace("ł", "l").replace("ź","z");
+        fun deAccent(str: CharSequence): String {
+            val nfdNormalizedString = Normalizer.normalize(str, Normalizer.Form.NFD)
+            return pattern.matcher(nfdNormalizedString).replaceAll("")
         }
     }
 

@@ -4,10 +4,6 @@ import com.google.firebase.database.Exclude
 import java.text.Normalizer
 
 
-
-
-
-
 /**
  * Created by saramakm on 24/06/2017.
  */
@@ -15,9 +11,25 @@ data class User(val number: Long) {
 
     constructor() : this(0) {
     }
+
     var checked: Boolean = false
     val first: String? = null
+
+    var first_normalized: String? = null
+        get() {
+            if (field == null)
+                field = normalize(first)
+            return field
+        }
+
     val last: String? = null
+
+    var last_normalized: String? = null
+        get() {
+            if (field == null)
+                field = normalize(last)
+            return field
+        }
     val type: String? = null
 
     val orderid: Long? = null
