@@ -5,6 +5,7 @@ import android.content.Context
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.ContextCompat.*
 import android.util.Log
+import kotlinx.android.synthetic.main.user_item_layout.view.*
 import pl.saramak.fbexample.R
 
 
@@ -93,6 +94,8 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
         holder.personalName.setBackgroundColor(getColor(holder.personalName.context, user))
         //in some cases, it will prevent unwanted situations
         holder.checkin.setOnCheckedChangeListener(null);
+        holder.checkingParent.setOnClickListener(null)
+        holder.checkingParent.setOnClickListener { holder.checkin.isChecked = !holder.checkin.isChecked}
         holder.checkin.isChecked = user.checked;
         holder.checkin.setOnCheckedChangeListener { buttonView, isChecked ->
             val myRef = database.getReference("/${user.number}")
@@ -113,7 +116,8 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
     class ViewHolder(itemView: android.view.View) : android.support.v7.widget.RecyclerView.ViewHolder(itemView) {
         var personalName = itemView.findViewById(R.id.person_detal) as android.widget.TextView
         var personalEmail = itemView.findViewById(R.id.person_email) as android.widget.TextView;
-        var checkin = itemView.findViewById(R.id.checkin) as android.support.v7.widget.AppCompatCheckBox;
+        var checkin = itemView.findViewById(R.id.checkin) as android.support.v7.widget.AppCompatCheckBox
+        var checkingParent = itemView;
 
     }
 

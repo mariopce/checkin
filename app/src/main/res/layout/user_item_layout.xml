@@ -3,39 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/border_background"
+    android:clickable="true"
+    android:id="@+id/checkinparent"
     android:layout_height="wrap_content">
 
-    <android.support.v7.widget.AppCompatCheckBox
+    <CheckBox
         android:id="@+id/checkin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="0dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Imie "
-        tools:layout_editor_absoluteY="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/checkin"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="8dp"
-        android:id="@+id/person_detal"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:id="@+id/person_email"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/checkin"
-        tools:layout_editor_absoluteY="0dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="8dp"
-
         app:layout_constraintTop_toTopOf="parent" />
+    <!--android:button="@drawable/custom_checkbox_design"-->
+
+    <TextView
+        android:id="@+id/person_detal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkin"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/person_email"
+        tools:text="Imie " />
+
+    <TextView
+        android:id="@+id/person_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/checkin"
+
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Email" />
 
 </android.support.constraint.ConstraintLayout>

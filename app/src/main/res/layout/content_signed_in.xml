@@ -7,20 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="pl.saramak.fbexample.SignedInActivity"
     tools:showIn="@layout/activity_signed_in">
-    <!-- <EditText
-        android:id="@+id/search"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
 
-        tools:layout_editor_absoluteX="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-   -->
     <android.support.v7.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
