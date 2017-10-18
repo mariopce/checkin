@@ -22,7 +22,7 @@ android:
 
 
 script:
-  - ./gradlew clean assDebug jacocoDebugReport coveralls -Pci --scan --configure-on-demand --parallel --stacktrace
+  - ./gradlew clean assDebug jacocoDebugReport coveralls -Pci --scan --configure-on-demand --stacktrace
 
 branches:
   except:
