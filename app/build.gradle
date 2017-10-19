@@ -27,7 +27,7 @@ android {
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "pl.saramak.fbexample"
-        minSdkVersion 23
+        minSdkVersion 17
         targetSdkVersion 25
         versionCode 3
         manifestPlaceholders = [fabric_io_id: "06b3a46ff23897266dd90122741dd5cae6c7a610"]
@@ -48,6 +48,7 @@ android {
 //            signingConfig signingConfigs.release
         }
         release {
+            debuggable true
             minifyEnabled false
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
