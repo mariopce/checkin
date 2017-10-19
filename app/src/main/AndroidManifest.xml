@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="pl.saramak.fbexample">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +22,9 @@
         <activity
             android:name=".SignedInActivity"
             android:label="@string/title_activity_signed_in"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".SimpleScannerActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="06b3a46ff23897266dd90122741dd5cae6c7a610"
