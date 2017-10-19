@@ -12,6 +12,14 @@ data class User(val number: Long) {
     constructor() : this(0) {
     }
 
+    var number_string: String? = null
+    get() {
+        if(field == null)
+            field = number.toString()
+
+        return field
+    }
+
     var checked: Boolean = false
     val first: String? = null
 
@@ -33,6 +41,12 @@ data class User(val number: Long) {
     val type: String? = null
 
     val orderid: Long? = null
+    var orderid_string : String? = null
+    get() {
+        if(field == null)
+            field = orderid.toString()
+        return field
+    }
     val email: String? = null
     @Exclude
     val firstLCN: String? = null
