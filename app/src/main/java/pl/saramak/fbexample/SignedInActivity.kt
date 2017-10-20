@@ -1,5 +1,6 @@
 package pl.saramak.fbexample
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -57,12 +58,14 @@ class SignedInActivity : AppCompatActivity() {
     }
 
 
+    private lateinit var searchEdit: EditText
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.settings, menu)
         val searchItem = menu.findItem(R.id.action_search);
         val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
-        val searchEdit = searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text) as EditText
+        searchEdit = searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text) as EditText
         searchView.setOnCloseListener(SearchCloseListener(mAdapter))
         searchView.setOnQueryTextListener(SearchTextListener(mAdapter))
         return true
@@ -72,6 +75,10 @@ class SignedInActivity : AppCompatActivity() {
         when (item.getItemId()) {
             R.id.action_logout -> {
                 logout()
+                return true
+            }
+            R.id.action_scan -> {
+                startActivityForResult(Intent(this, SimpleScannerActivity::class.java), 0)
                 return true
             }
             else ->
@@ -90,6 +97,17 @@ class SignedInActivity : AppCompatActivity() {
                     finish();
 
                 })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        if (resultCode == 0 && resultCode == Activity.RESULT_OK) {
+            data?.let {
+                val t:String = it.getStringExtra("RESULT")
+                searchEdit.setText(t)
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }

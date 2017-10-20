@@ -56,7 +56,14 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
                 val constraints = constraint!!.split(regex)
 
                 for (element in constraints) {
+                    if(element.isNumeric()) {
+                        filtered = filtered.filter { it.orderid_string!!.contains(element) || it.number_string!!.contains(element) }
+                        if(filtered.isNotEmpty())
+                            continue
+                    }
+
                     filtered = filtered.filter { it.last_normalized!!.toLowerCase().contains(element ?: "") || it.first_normalized!!.toLowerCase().contains(element ?: "") || it.email!!.toLowerCase().contains(element ?: "") }
+
                 }
             }
 
@@ -132,3 +139,8 @@ class UserAdapter(val database: com.google.firebase.database.FirebaseDatabase) :
     }
 
 }
+
+val numeric = "[0-9]+".toRegex()
+
+private fun String.isNumeric(): Boolean = numeric.matches(this)
+
